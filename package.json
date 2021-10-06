@@ -1,0 +1,18 @@
+{
+  "name": "code-snippets-chrome-console",
+  "version": "1.0.0",
+  "description": "",
+  "main": "actions-example.js",
+  "scripts": {
+    "create": "ts-node create-workers",
+    "delete": "ts-node delete-workers"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ts-node": "^10.2.0",
+    "twilio": "^3.67.0"
+  }
+}

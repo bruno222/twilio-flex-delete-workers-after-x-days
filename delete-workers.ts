@@ -16,26 +16,33 @@ const run = async () => {
   console.log('workers total: ', workers.length);
 
   // Filter the old ones
-  const workersToDelete = workers.filter(({ dateStatusChanged }) => {
+  const workersToDelete = workers.filter(({ dateStatusChanged, friendlyName }) => {
     const lastTime = new Date(dateStatusChanged).getTime();
     const daysAgo = (now - lastTime) / (24 * 60 * 60 * 1000);
+
+    // TODO BEGIN: only remove this IF below once you are sure this code are not going to delete your real workers.
+    //             so please, check once more if DELETE_OLDER_THAN_X_DAYS is correct!
+    if (!friendlyName.includes('test')) {
+      return false;
+    }
+    // TODO END
+
     return daysAgo >= DELETE_OLDER_THAN_X_DAYS;
   });
 
   console.log('workers to delete: ', workersToDelete.length);
 
   // Delete
-  workersToDelete.map(async ({ sid, friendlyName }) => {
+  for (let { sid, friendlyName } of workersToDelete) {
     try {
-      // TODO: only remove this line below once you are sure this code are not going to delete your real workers.
-      if (friendlyName.includes('test')) {
-        await workspace.workers(sid).remove();
-        console.log(`worker has been deleted`, sid, friendlyName);
-      }
+      await workspace.workers(sid).remove();
+      console.log(`worker has been deleted`, sid, friendlyName);
     } catch (e) {
       console.log(`failed to delete worker`, sid, friendlyName, e);
     }
-  });
+  }
+
+  console.log('bye bye!');
 };
 
 run();

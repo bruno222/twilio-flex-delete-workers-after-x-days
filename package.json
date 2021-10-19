@@ -1,5 +1,5 @@
 {
-  "name": "code-snippets-chrome-console",
+  "name": "twilio-flex-delete-workers-after-x-days",
   "version": "1.0.0",
   "description": "",
   "main": "actions-example.js",
@@ -8,11 +8,15 @@
     "delete": "ts-node delete-workers"
   },
   "keywords": [],
-  "author": "",
+  "author": "Bruno Kilian",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
     "ts-node": "^10.2.0",
     "twilio": "^3.67.0"
-  }
+  },
+  "engines": {
+    "node": ">=16",
+    "npm": ">=7"
+}
 }

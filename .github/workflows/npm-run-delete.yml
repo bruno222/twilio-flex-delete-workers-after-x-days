@@ -24,7 +24,10 @@ jobs:
 
       - name: Delete Workers
         env:
-          SUPER_SECRET: ${{ secrets.Secrets }}
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_API_KEY_SECRET: ${{ secrets.TWILIO_API_KEY_SECRET }}
+          TWILIO_API_KEY_SID: ${{ secrets.TWILIO_API_KEY_SID }}
+          TWILIO_TASKROUTER_WORKSPACE_SID: ${{ secrets.TWILIO_TASKROUTER_WORKSPACE_SID }}
         run: |
           npm ci
           npm run delete

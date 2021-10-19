@@ -22,12 +22,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Install Dependencies
+        run: npm ci
+
       - name: Delete Workers
         env:
           TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
           TWILIO_API_KEY_SECRET: ${{ secrets.TWILIO_API_KEY_SECRET }}
           TWILIO_API_KEY_SID: ${{ secrets.TWILIO_API_KEY_SID }}
           TWILIO_TASKROUTER_WORKSPACE_SID: ${{ secrets.TWILIO_TASKROUTER_WORKSPACE_SID }}
-        run: |
-          npm ci
-          npm run delete
+        run: npm run delete

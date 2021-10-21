@@ -7,7 +7,7 @@ import { Twilio } from 'twilio';
 const run = async () => {
   const client = new Twilio(process.env.TWILIO_API_KEY_SID!, process.env.TWILIO_API_KEY_SECRET!, { accountSid: process.env.TWILIO_ACCOUNT_SID! });
   const workspace = client.taskrouter.workspaces(process.env!.TWILIO_TASKROUTER_WORKSPACE_SID!);
-  const DELETE_OLDER_THAN_X_DAYS = 0;
+  const DELETE_OLDER_THAN_X_DAYS = 30;
 
   const now = new Date().getTime();
 
